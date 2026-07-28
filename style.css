@@ -1,0 +1,549 @@
+/* ============================================================
+   EcoAcción — Hoja de estilos
+   Paleta: verde bosque + blanco cálido + un toque de dorado tierra
+   Tipografía: Fraunces (títulos, con carácter orgánico) +
+               Work Sans (textos, limpia y fácil de leer)
+   ============================================================ */
+
+/* Importamos las dos fuentes de Google Fonts que vamos a usar */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+/* --- Variables de color y medidas, para no repetir valores --- */
+:root {
+    --verde-bosque: #1B3B2F;      /* verde muy oscuro, casi negro-verdoso */
+    --verde-hoja: #2F6F4E;        /* verde principal, para botones y acentos */
+    --verde-hoja-oscuro: #204C36; /* verde para hover */
+    --verde-pastel: #E7F0E1;      /* verde muy suave, para fondos de tarjetas */
+    --dorado-tierra: #A9812F;     /* acento cálido, se usa con moderación */
+    --crema: #FBFAF6;             /* blanco cálido, no un blanco frío */
+    --texto: #1E2A22;             /* casi negro con tinte verde, para leer bien */
+    --borde-suave: #D3E2CC;
+    --sombra: 0 10px 25px rgba(27, 59, 47, 0.10);
+    --radio-organico: 26px 8px 26px 8px; /* esquinas asimétricas, look "hoja" */
+}
+
+/* Reiniciamos márgenes y aplicamos la tipografía base a todo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--crema);
+    color: var(--texto);
+    font-family: 'Work Sans', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Los títulos usan la tipografía con más carácter */
+h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    color: var(--verde-bosque);
+}
+
+/* Un solo estilo de foco visible, para que se pueda navegar con teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--dorado-tierra);
+    outline-offset: 2px;
+}
+
+/* --- Barra de navegación --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--verde-bosque);
+    padding: 18px 40px;
+    flex-wrap: wrap;
+    border-bottom: 3px solid var(--dorado-tierra);
+}
+
+.navbar .logo {
+    color: var(--crema);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.nav-links a {
+    color: var(--crema);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 500;
+    font-size: 15px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+    border-bottom-color: var(--dorado-tierra);
+}
+
+/* El botón de "Registrarse" en la barra necesita más contraste que un link normal */
+.nav-links a.btn-nav {
+    background-color: var(--dorado-tierra);
+    color: var(--verde-bosque);
+    padding: 8px 18px;
+    border-radius: 999px;
+    border-bottom: none;
+    font-weight: 600;
+}
+
+.nav-links a.btn-nav:hover {
+    background-color: #BF9640;
+}
+
+/* --- Sección principal (hero) --- */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 40px;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hero-texto {
+    flex: 1;
+    min-width: 280px;
+}
+
+.hero-texto h2 {
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 480px;
+}
+
+.hero-texto p {
+    font-size: 16px;
+    color: #3C4C42;
+    margin-bottom: 28px;
+    max-width: 480px;
+}
+
+.hero-imagen {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Botón principal reutilizable --- */
+.btn-principal {
+    display: inline-block;
+    background-color: var(--verde-hoja);
+    color: var(--crema);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: var(--sombra);
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-principal:hover {
+    background-color: var(--verde-hoja-oscuro);
+    transform: translateY(-2px);
+}
+
+/* --- Tarjetas informativas de la página de inicio --- */
+.info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 20px 40px 70px 40px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid var(--borde-suave);
+    border-radius: var(--radio-organico);
+    padding: 26px;
+    width: 250px;
+    box-shadow: var(--sombra);
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+/* Un ligero giro alterno en cada tarjeta, para que no se vean como copias exactas */
+.card:nth-child(1) { transform: rotate(-0.6deg); }
+.card:nth-child(2) { transform: rotate(0deg); }
+.card:nth-child(3) { transform: rotate(0.6deg); }
+.card:nth-child(1):hover,
+.card:nth-child(2):hover,
+.card:nth-child(3):hover { transform: translateY(-4px) rotate(0deg); }
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14.5px;
+    color: #3C4C42;
+}
+
+/* --- Formularios (registro y login) --- */
+.form-section {
+    display: flex;
+    justify-content: center;
+    padding: 70px 20px;
+}
+
+.form-card {
+    background-color: white;
+    border-radius: var(--radio-organico);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--borde-suave);
+}
+
+.form-card h2 {
+    font-size: 26px;
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.form-card label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--verde-bosque);
+}
+
+.form-card input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--borde-suave);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Work Sans', sans-serif;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.form-card input:focus {
+    border-color: var(--verde-hoja);
+    outline: none;
+}
+
+.form-card button {
+    width: 100%;
+    margin-top: 26px;
+}
+
+.texto-secundario {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 14px;
+    color: #3C4C42;
+}
+
+.texto-secundario a {
+    color: var(--verde-hoja);
+    font-weight: 600;
+}
+
+.mensaje-error {
+    background-color: #FBEAEA;
+    color: #A6383A;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 14px;
+    font-size: 14px;
+    border: 1px solid #F0C7C8;
+}
+
+/* --- Dashboard --- */
+.dashboard-section {
+    padding: 60px 30px;
+    text-align: center;
+}
+
+.dashboard-section h2 {
+    font-size: 30px;
+}
+
+.dashboard-section > p {
+    color: #3C4C42;
+    margin-top: 6px;
+}
+
+.dashboard-card {
+    background-color: white;
+    max-width: 460px;
+    margin: 28px auto 0 auto;
+    padding: 36px;
+    border-radius: var(--radio-organico);
+    box-shadow: var(--sombra);
+    border: 1px solid var(--borde-suave);
+}
+
+.dashboard-card h3 {
+    font-size: 16px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    color: #3C4C42;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.numero-grande {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    color: var(--verde-hoja);
+    font-weight: 600;
+    margin: 8px 0 18px 0;
+}
+
+/* Barra de progreso, con marcas para cada uno de los 5 retos */
+.barra-progreso-fondo {
+    position: relative;
+    background-color: var(--verde-pastel);
+    background-image: repeating-linear-gradient(
+        to right,
+        transparent 0, transparent calc(20% - 1px),
+        var(--crema) calc(20% - 1px), var(--crema) 20%
+    );
+    border-radius: 999px;
+    overflow: hidden;
+    height: 28px;
+    margin: 22px 0;
+    border: 1px solid var(--borde-suave);
+}
+
+.barra-progreso-relleno {
+    position: relative;
+    background-color: var(--verde-hoja);
+    height: 100%;
+    color: var(--crema);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s ease-in-out;
+    white-space: nowrap;
+}
+
+/* Un pequeño "brote" dorado que marca el punto actual del progreso */
+.barra-progreso-relleno::after {
+    content: "";
+    position: absolute;
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--dorado-tierra);
+    border: 2px solid var(--crema);
+}
+
+/* --- Página de retos --- */
+.retos-section {
+    padding: 50px 30px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.retos-section h2 {
+    font-size: 30px;
+}
+
+.retos-section > p {
+    color: #3C4C42;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+.lista-retos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 34px;
+}
+
+.tarjeta-reto {
+    position: relative;
+    background-color: white;
+    border: 1px solid var(--borde-suave);
+    border-radius: var(--radio-organico);
+    padding: 28px 24px;
+    width: 220px;
+    box-shadow: var(--sombra);
+    transition: transform 0.2s ease-in-out;
+}
+
+.tarjeta-reto:hover {
+    transform: translateY(-4px);
+}
+
+.tarjeta-reto.completado {
+    background-color: var(--verde-pastel);
+    border-color: var(--verde-hoja);
+}
+
+.tarjeta-reto h3 {
+    font-size: 17px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.btn-completar {
+    display: inline-block;
+    background-color: var(--verde-hoja);
+    color: var(--crema);
+    padding: 9px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-completar:hover {
+    background-color: var(--verde-hoja-oscuro);
+}
+
+.estado-completado {
+    color: var(--verde-hoja);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Sello estilo "aprobado" en la esquina de un reto ya completado */
+.tarjeta-reto.completado::after {
+    content: "✓";
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--dorado-tierra);
+    color: var(--verde-bosque);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.mensaje-felicitacion {
+    background-color: var(--verde-bosque);
+    color: var(--crema);
+    padding: 18px;
+    border-radius: 16px;
+    max-width: 520px;
+    margin: 0 auto 24px auto;
+    font-weight: 600;
+    border: 2px solid var(--dorado-tierra);
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: 24px;
+    background-color: var(--verde-bosque);
+    color: var(--crema);
+    font-size: 13.5px;
+    margin-top: 40px;
+}
+
+/* --- Diseño responsive para pantallas pequeñas --- */
+@media (max-width: 600px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 24px;
+    }
+
+    .hero-texto h2,
+    .hero-texto p {
+        max-width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding: 16px 20px;
+    }
+
+    .nav-links a {
+        margin: 0 10px;
+    }
+
+    .card:nth-child(1),
+    .card:nth-child(2),
+    .card:nth-child(3) {
+        transform: rotate(0deg);
+    }
+}
+
+/* Respetamos si la persona prefiere menos animaciones */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+/* --- Botón "Volver al inicio" en la barra de navegación --- */
+.nav-links a.btn-inicio {
+    background-color: transparent;
+    border: 1.5px solid var(--dorado-tierra);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-weight: 600;
+}
+
+.nav-links a.btn-inicio:hover {
+    background-color: var(--dorado-tierra);
+    color: var(--verde-bosque);
+    border-bottom: none;
+}
+
+/* --- Bloques de categoría en la página de retos --- */
+.categoria-bloque {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.categoria-titulo {
+    font-size: 20px;
+    color: var(--verde-hoja);
+    border-bottom: 2px solid var(--borde-suave);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+}

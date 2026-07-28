@@ -1,0 +1,56 @@
+<!-- Página que muestra los retos ecológicos agrupados por categoría -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoAcción - Retos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1 class="logo">🌱 EcoAcción</h1>
+        <div class="nav-links">
+            <a href="{{ url_for('inicio') }}" class="btn-inicio">Inicio</a>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        </div>
+    </nav>
+
+    <section class="retos-section">
+        <h2>Retos ecológicos</h2>
+        <p>Completa estos retos para ayudar al planeta</p>
+
+        <!-- Mensaje de felicitación cuando se completan todos los retos -->
+        {% if todos_completados %}
+            <div class="mensaje-felicitacion">
+                🎉 ¡Felicidades! Has completado todos los retos ecológicos 🎉
+            </div>
+        {% endif %}
+
+        <!-- Recorremos cada categoría y mostramos sus retos -->
+        {% for categoria, lista in retos_por_categoria.items() %}
+            <div class="categoria-bloque">
+                <h3 class="categoria-titulo">{{ categoria }}</h3>
+                <div class="lista-retos">
+                    {% for reto in lista %}
+                        <div class="tarjeta-reto {% if reto['completado'] == 1 %}completado{% endif %}">
+                            <h3>{{ reto['nombre'] }}</h3>
+
+                            {% if reto['completado'] == 1 %}
+                                <p class="estado-completado">Completado</p>
+                            {% else %}
+                                <a href="{{ url_for('completar_reto', reto_id=reto['id']) }}" class="btn-completar">
+                                    Completar
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+</body>
+</html>

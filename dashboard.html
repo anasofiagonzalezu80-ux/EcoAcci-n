@@ -1,0 +1,41 @@
+<!-- Página del dashboard, muestra el progreso del usuario -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoAcción - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1 class="logo">🌱 EcoAcción</h1>
+        <div class="nav-links">
+            <a href="{{ url_for('inicio') }}" class="btn-inicio">Inicio</a>
+            <a href="{{ url_for('retos') }}">Retos</a>
+            <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        </div>
+    </nav>
+
+    <section class="dashboard-section">
+        <h2>¡Hola, {{ nombre }}!</h2>
+        <p>Este es tu progreso en EcoAcción</p>
+
+        <div class="dashboard-card">
+            <h3>Retos completados</h3>
+            <p class="numero-grande">{{ completados }} / {{ total }}</p>
+
+            <!-- Barra de progreso, el ancho se llena según el porcentaje -->
+            <div class="barra-progreso-fondo">
+                <div class="barra-progreso-relleno" style="width: {{ progreso }}%;">
+                    {{ progreso }}%
+                </div>
+            </div>
+
+            <a href="{{ url_for('retos') }}" class="btn-principal">Ver retos ecológicos</a>
+        </div>
+    </section>
+
+</body>
+</html>
