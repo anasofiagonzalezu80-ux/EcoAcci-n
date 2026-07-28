@@ -1,7 +1,7 @@
 # 🌱 EcoAcción
 
 EcoAcción es una aplicación web educativa que ayuda a las personas a aprender
-sobre el cambio climático completando 5 pequeños retos ecológicos.
+sobre el cambio climático completando 10 pequeños retos ecológicos.
 
 ## Tecnologías utilizadas
 
